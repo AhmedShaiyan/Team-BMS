@@ -1,0 +1,4 @@
+Django Superuser
+user: BMS_admin
+email: soham.pujari@u.nus.edu
+pw: TeamBMS21
