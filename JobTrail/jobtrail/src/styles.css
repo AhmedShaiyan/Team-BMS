@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #efeee7;
+  font-family: 'Open Sauce', sans-serif;
+  font-weight: 600; /* Semi-bold */
+  color: #333; /* Text color for non-JobTrail text */
+}
+
+.container {
+  text-align: center; /* Keeping the content of the page at the center */
+}
+
+.header {
+  font-family: 'Playfair Display', serif;
+  font-size: 25px;
+  font-weight: bold;
+  color: black;
+  margin: 0;
+}
+
+.form-container {
+  background-color: #d9d9d9; 
+  padding: 20px;
+  display: inline-block;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.button-container {
+  text-align: center;
+}
+
