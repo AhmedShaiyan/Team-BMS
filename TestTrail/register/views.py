@@ -8,11 +8,23 @@ def register(request):
     if request.method == 'GET':
         form = RegisterForm()
         return render(request, 'register/register.html',{'form':form})
+    
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.username = user.username.lower()
+            user.save()
+            messages.success(request,'Successfully signed up!')
+            login(request, user)
+            return redirect('index')
+        else:
+            return render(request, 'register/register.html',{'form':form})
 
 def sign_in(request):
     if request.method == 'GET':
         if request.user.is_authenticated:
-            return redirect('FileUpload')
+            return redirect('index')
 
         form = LoginForm()
         return render(request, 'register/login.html', {'form':form})
@@ -27,7 +39,7 @@ def sign_in(request):
             if user:
                 login(request, user)
                 messages.success(request,f'Hi {username.title()}, welcome back!')
-                return redirect('FileUpload')
+                return redirect('index')
         
         messages.error(request,f'Invalid username or password')
         return render(request,'register/login.html',{'form':form})
