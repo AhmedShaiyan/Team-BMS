@@ -17,14 +17,14 @@ def register(request):
             user.save()
             messages.success(request,'Successfully signed up!')
             login(request, user)
-            return redirect('index')
+            return redirect('login')
         else:
             return render(request, 'register/register.html',{'form':form})
 
 def sign_in(request):
     if request.method == 'GET':
         if request.user.is_authenticated:
-            return redirect('index')
+            return redirect('fileupload')
 
         form = LoginForm()
         return render(request, 'register/login.html', {'form':form})
@@ -39,7 +39,7 @@ def sign_in(request):
             if user:
                 login(request, user)
                 messages.success(request,f'Hi {username.title()}, welcome back!')
-                return redirect('index')
+                return redirect('fileupload')
         
         messages.error(request,f'Invalid username or password')
         return render(request,'register/login.html',{'form':form})
