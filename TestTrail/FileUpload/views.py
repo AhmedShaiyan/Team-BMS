@@ -15,5 +15,8 @@ def uploaded_file(request):
             return HttpResponseRedirect('/success/url/')
         else:
             form = UploadFileForm()
-        return render(request,'upload.html',{'form':form})
-
+        return render(request,'FileUpload/FileUpload.html',{'form':form})
+    
+    if request.method == 'GET':
+        form = UploadFileForm()
+        return render(request,'FileUpload/FileUpload.html',{'form':form})
