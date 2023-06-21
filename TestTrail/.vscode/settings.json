@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/462dd445-bc89-4ee6-b29d-bd9e0613dd61/resourceGroups/appsvc_linux_centralus_basic/providers/Microsoft.Web/sites/JobTrail",
+    "appService.deploySubpath": "."
+}

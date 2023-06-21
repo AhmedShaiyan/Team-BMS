@@ -2,3 +2,7 @@ Django Superuser
 user: BMS_admin
 email: soham.pujari@u.nus.edu
 pw: TeamBMS21
+
+Azure SQL Server admin
+BMS_admin
+12Floor21

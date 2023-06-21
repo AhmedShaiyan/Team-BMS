@@ -1,5 +1,9 @@
+# Database
+/TestTrail/db.sqlite3
+
 # Secret Key
 /TestTrail/TestTrail/SecretKey.txt
+/TestTrail/FileUpload/functions/OpenAI.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
