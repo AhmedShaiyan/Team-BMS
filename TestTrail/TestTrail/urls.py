@@ -16,9 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from FileUpload.views import *
 
 urlpatterns = [
     path("", include("FileUpload.urls")),
     path('admin/', admin.site.urls),
     path('', include("register.urls")),
+    path('react/',ReactView.as_view(),name='something')
 ]
