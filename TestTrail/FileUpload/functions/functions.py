@@ -2,8 +2,8 @@ import openai
 from pdfminer.high_level import extract_text
 import json
 
-#with open('OpenAI.txt') as f:
-#    openai.api_key = f.read().strip()
+with open('FileUpload/functions/OpenAI.txt') as f:
+    openai.api_key = f.read().strip()
 
 def read_file(file):
     with open(file, 'rb') as f:
@@ -11,10 +11,12 @@ def read_file(file):
 
         return information
 
-def identify_skills(information):
+def identify_skills(file):
+    text = read_file(file)
+
     response = openai.Completion.create(
         model = 'gpt-3.5-turbo',
-        prompt = information,
+        prompt = text,
         max_tokens = 50,
         n = 5,
         stop = None,

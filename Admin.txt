@@ -6,3 +6,6 @@ pw: TeamBMS21
 Azure SQL Server admin
 BMS_admin
 12Floor21
+
+bmstest
+TeamBMS21
