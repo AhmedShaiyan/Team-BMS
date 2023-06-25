@@ -1,5 +1,7 @@
 from django import forms
+from .models import *
 
-class UploadFileForm(forms.Form):
-    title = forms.CharField(max_length=100)
-    file = forms.FileField(label='Select a file')
+class UploadFileForm(forms.ModelForm):
+    class Meta:
+        model = Document
+        fields=['name','filepath']
