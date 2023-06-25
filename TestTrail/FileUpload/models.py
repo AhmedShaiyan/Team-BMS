@@ -10,4 +10,6 @@ class Document(models.Model):
         return self.name + ': ' + str(self.filepath)
 
 class Skills(models.Model):
-    pass
+    name = models.CharField(max_length=500,null=True)
+    skill_list = models.CharField(max_length=800,null=True)
+    
