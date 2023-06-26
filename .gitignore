@@ -4,6 +4,7 @@
 # Secret Key
 /TestTrail/TestTrail/SecretKey.txt
 /TestTrail/FileUpload/functions/OpenAI.txt
+Admin.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
