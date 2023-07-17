@@ -20,7 +20,7 @@ def identify_skills():
 
     completion = openai.ChatCompletion.create(
         model = 'gpt-3.5-turbo',
-        messages = [{'role':'system','content':"Return a python list of the skills identified in the following resume: " + text}],
+        messages = [{'role':'system','content':"Return a python list of the top 10 skills identified in the following resume, summarising them in up to 3 words each: " + text}],
         max_tokens = 1000,
         n = 3,
         stop = None,
