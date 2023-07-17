@@ -6,6 +6,11 @@ from rest_framework.response import Response
 from .models import *
 from rest_framework.views import APIView
 from .serializer import *
+from pathlib import Path
+import os
+
+directory = os.getcwd()
+pardir = os.path.abspath(os.path.join(directory, os.pardir))
 
 # Create your views here.
 def index(request):
@@ -36,6 +41,9 @@ def uploadfile(request):
         if lastfile is not None:
             filepath = lastfile.filepath
             filename = lastfile.name
+        else:
+            filepath = pardir + '/media/files'
+            filename = ''
 
         form = UploadFileForm(request.POST or None, request.FILES or None)
 
@@ -53,6 +61,9 @@ def uploadfile(request):
         if lastfile is not None:
             filepath = lastfile.filepath
             filename = lastfile.name
+        else:
+            filepath = pardir + '/media/files'
+            filename = ''
 
         form = UploadFileForm(request.POST or None, request.FILES or None)
 

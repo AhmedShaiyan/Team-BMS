@@ -1,7 +1,14 @@
 import openai
 from pdfminer.high_level import extract_text
 import json
+import psycopg2
+import numpy as np
+from sklearn.metrics.pairwise import cosine_similarity
 from FileUpload.models import Document
+import environ
+
+env = environ.Env()
+environ.Env.read_env()
 
 with open('FileUpload/functions/OpenAI.txt') as f:
     openai.api_key = f.read().strip()
@@ -23,3 +30,12 @@ def identify_skills():
     output = completion['choices'][0]['message']['content']
 
     return output
+
+def connect_to_database():
+    connection = psycopg2.connect(
+        database=env('DBNAME'),
+        user=env('DBUSER'),
+        password=env('DBPASS'),
+        host=env('DBHOST'),
+        port=env('DBPORT')
+    )
