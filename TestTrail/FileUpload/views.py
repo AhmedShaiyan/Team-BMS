@@ -37,13 +37,9 @@ def uploadfile(request):
        
     if request.method == 'POST':
         
-        lastfile = Document.objects.last()
-        if lastfile is not None:
-            filepath = lastfile.filepath
-            filename = lastfile.name
-        else:
-            filepath = pardir + '/media/files'
-            filename = ''
+        #lastfile = Document.objects.last()
+        filepath = pardir + '/media/files'
+        filename = ''
 
         form = UploadFileForm(request.POST or None, request.FILES or None)
 
@@ -57,13 +53,9 @@ def uploadfile(request):
 
         return redirect('openaioutput')
     if request.method == 'GET':
-        lastfile = Document.objects.last()
-        if lastfile is not None:
-            filepath = lastfile.filepath
-            filename = lastfile.name
-        else:
-            filepath = pardir + '/media/files'
-            filename = ''
+        #lastfile = Document.objects.last()
+        filepath = pardir + '/media/files'
+        filename = ''
 
         form = UploadFileForm(request.POST or None, request.FILES or None)
 
