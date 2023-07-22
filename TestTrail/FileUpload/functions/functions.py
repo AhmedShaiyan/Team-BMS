@@ -39,3 +39,27 @@ def connect_to_database():
         host=env('DBHOST'),
         port=env('DBPORT')
     )
+
+
+    return connection
+
+def retrieve_job_listings(conn):
+    cursor = conn.cursor()
+    cursor.execute("SELECT job, skills FROM joblistings")
+    job_listings = cursor.fetchall()
+    cursor.close()
+    return job_listings
+
+def calculate_cosine_similarity(skills, job_listings):
+    skill_set = set(skills)
+    similarities = []
+    
+    for job_title, job_skills in job_listings:
+        job_skill_set = set(job_skills)
+        common_skills = skill_set.intersection(job_skill_set)
+        
+        # Calculate the cosine similarity
+        similarity = len(common_skills) / (np.sqrt(len(skill_set)) * np.sqrt(len(job_skill_set)))
+        similarities.append((job_title, similarity))
+    
+    return similarities

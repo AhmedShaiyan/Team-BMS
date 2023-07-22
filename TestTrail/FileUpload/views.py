@@ -69,7 +69,7 @@ def uploadfile(request):
 def openaioutput(request):
     if request.method == 'GET':
         output = identify_skills()
-        skill_object = Skills.objects.create(name=Document.objects.last().name,skill_list=output)
+        skill_object = Skills.objects.create(name=Document.objects.last(),skill_list=output)
         skill_object.save()
         return HttpResponse(output)
     
