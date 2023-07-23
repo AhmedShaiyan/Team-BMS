@@ -78,7 +78,7 @@ def openaioutput(request):
 def jobs_suggested(request):
     if request.method == 'GET':
         output = calculate_cosine_similarity()
-        job_object = JobRec.objects.create(user=request.user,user_skills=Skills.objects.last(),job_recs=output)
+        job_object = JobRec.objects.create(user=request.user.username,user_skills=Skills.objects.last(),job_recs=output)
         job_object.save()
         return HttpResponse(output)
     
