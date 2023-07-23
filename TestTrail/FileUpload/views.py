@@ -64,7 +64,7 @@ def uploadfile(request):
                    'filename':filename
         }
         
-        return render(request,'FileUpload/templates/FileUpload/FileUpload.html',context)
+        return render(request,'FileUpload/FileUpload.html',context)
 
 def openaioutput(request):
     if request.method == 'GET':
