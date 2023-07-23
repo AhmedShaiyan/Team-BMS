@@ -72,21 +72,21 @@ def openaioutput(request):
 
         try:
             # Try to fetch existing skills for the current user
-            skills = Skills.objects.get(name=current_user.username)
+            skills = Skills.objects.get(user=current_user.username)
         except Skills.DoesNotExist:
             # If skills do not exist, create a new Skills object
-            skills = Skills.objects.create(name=current_user.username, skill_list='')
+            skills = Skills.objects.create(user=current_user.username, skill_list='')
 
-        # Identify skills for the latest uploaded file
+        # Identify skills for the latest uploaded fileait
         output = identify_skills()
-        skill_object = Skills.objects.create(name=Document.objects.last(),skill_list=output)
+        skill_object = Skills.objects.create(user=current_user,name=Document.objects.last(),skill_list=output)
         skill_object.save()
         return redirect('jobs_suggested')
 
 def jobs_suggested(request):
     if request.method == 'GET':
         output = calculate_cosine_similarity()
-        job_object = JobRec.objects.create(user_skills=Skills.objects.last(),job_recs=output)
+        job_object = JobRec.objects.create(user=request.user,user_skills=Skills.objects.last(),job_recs=output)
         job_object.save()
         return HttpResponse(output)
     
