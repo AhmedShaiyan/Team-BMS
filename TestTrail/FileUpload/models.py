@@ -17,4 +17,8 @@ class Skills(models.Model):
 
     def __str__(self):
         return self.skill_list
+
+class JobRec(models.Model):
+    user_skills = models.ForeignKey(Skills,default=1,null=False,on_delete=models.CASCADE)
+    job_recs = models.CharField(max_length=1000,null=True)
     

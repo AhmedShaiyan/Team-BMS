@@ -61,7 +61,7 @@ def calculate_cosine_similarity():
     df = fetchjoblistings()
     
     #change to append skill output to end
-    df.loc[len(df)] = ['Test',"['Detail-oriented', 'Six Sigma Black Belt', 'Manufacturing internships', 'Efficiency improvement', 'Cost reduction', 'Setup reduction', 'Kanban implementation', 'Mechanical engineering', 'MATLAB, AutoCAD, SolidWorks', 'CNC, Lathes']"]
+    df.loc[len(df)] = ['Analysed Skills',str(identify_skills())]
     
     tv = TfidfVectorizer()
     tfidf_matrix = tv.fit_transform(df['skills'])
