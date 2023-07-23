@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2 class="mb-4">Identified Skills</h2>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Skills List</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for skill in skills %}
+            <tr>
+              <td>{{ skill.name }}</td>
+              <td>{{ skill.skill_list }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock content %}

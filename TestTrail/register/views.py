@@ -4,6 +4,10 @@ from django.contrib import messages
 from .forms import RegisterForm, LoginForm
 
 # Create your views here.
+
+def index(request):
+    return render(request, 'index.html')
+
 def register(request):
     if request.method == 'GET':
         form = RegisterForm()

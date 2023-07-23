@@ -24,5 +24,9 @@ urlpatterns = [
     path("", include("FileUpload.urls")),
     path('admin/', admin.site.urls),
     path('', include("register.urls")),
-    path('react/',ReactView.as_view(),name='something'),
+    #path('react/',ReactView.as_view(),name='something'),
 ] + static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
+
+# in development mode
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

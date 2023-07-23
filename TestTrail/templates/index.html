@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobTrail</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font - Pacifico -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <!-- Font - Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Custom styles -->
+    <style>
+        /* Your custom styles go here */
+        body {
+            /* Add your body styles here */
+            text-align: center;
+            padding-top: 100px;
+            font-family: 'Pacifico', sans-serif;
+            background-color: #efeee7; /* Set the background color to #efeee7 */
+        }
+        h1 {
+            font-size: 72px;
+        }
+        .lead {
+            font-size: 24px;
+        }
+        .btn-lg {
+            /* Add your button styles here */
+            font-size: 18px;
+            padding: 10px 20px;
+            width: 200px; /* Set a fixed width for the buttons */
+            border-radius: 50px;
+            margin-top: 10px;
+            color: black; /* Set the text color to black */
+            border: none; /* Remove the border */
+            position: relative; /* Make the buttons relative so that the text can be positioned inside */
+        }
+        .btn-signup {
+            background-color: #d8d8d8; /* Change the color of the Sign Up button to #d8d8d8 */
+        }
+        .btn-login {
+            background-color: #a1ccef; /* Change the color of the Login button to #a1ccef */
+        }
+        .button-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 10px;
+            position: absolute; /* Position the text absolutely inside the buttons */
+            bottom: 49px; /* Adjust top positioning to move the text to the top of the buttons */
+            left: 10px; /* Adjust left positioning to create space between the text and the button's left edge */
+        }
+        /* Add a margin between the buttons */
+        .button-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="display-1">JobTrail</h1>
+        <p class="lead">Transform your resume, transform your career.</p>
+        <div class="d-flex justify-content-center flex-column align-items-center mt-5">
+            <div class="button-container">
+                <a href="{% url 'signup' %}" class="btn btn-primary btn-lg btn-signup">
+                    <div class="button-text">New to JobTrail?</div>
+                    Sign Up
+                </a>
+            </div>
+            <div class="button-container">
+                <a href="{% url 'login' %}" class="btn btn-primary btn-lg btn-login mt-2">
+                    <div class="button-text">Already have an account?</div>
+                    Login
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (Popper.js and Bootstrap's JavaScript) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

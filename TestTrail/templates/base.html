@@ -1,34 +1,51 @@
 <!DOCTYPE html>
-<html lang = "en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name = "viewport" content = "width=device-width, initial-scale=1.0" />
-        <title>{% if title %} {{title}} {% else %} JobTrail {% endif %}</title>
-    </head>
-    <body>
-        <header>
-            {%if request.user.is_authenticated %}
-  			    <span>Hi {{ request.user.username | title }}</span>
-  			    <a href="{% url 'logout' %}">Logout</a>
-  		    {%else%}
-  			    <a href="{% url 'login' %}">Login</a>
-  		    {%endif%}
-        </header>
-        <main>
-            {% if messages %}
-			    <div class="messages">
-			    {% for message in messages %}
-				    <div class="alert {% if message.tags %}alert-{{ message.tags }}"{% endif %}>
-					    {{ message }}
-				    </div>
-			    {% endfor %}
-			    </div>
-		    {% endif %}
-
-            
-            {% block content %}
-            {% endblock %}
-        </main>
-
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if title %} {{ title }} {% else %} JobTrail {% endif %}</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include your CSS stylesheets and other meta tags here -->
+    <style>
+        body {
+            text-align: center;
+            background-color: #efeee7; /* Set the background color to #efeee7 */
+        }
+        h1 {
+            font-size: 36px;
+            font-weight: bold;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+        }
+    </style>
+</head>
+<body>
+    <h1>JobTrail</h1>
+    <header>
+        {% if request.user.is_authenticated %}
+            <span>Hi {{ request.user.username | title }}</span>
+            <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+        {% endif %}
+    </header>
+    <main>
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+        {% block content %}
+        {% endblock %}
+    </main>
+    <!-- Include Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
 </html>
