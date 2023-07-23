@@ -1,6 +1,10 @@
 # Database
 /TestTrail/db.sqlite3
 
+# Media/Files Directory
+/TestTrail/media/files/*
+!/TestTrail/media/files/.gitkeep
+
 # Secret Key
 /TestTrail/TestTrail/SecretKey.txt
 /TestTrail/FileUpload/functions/OpenAI.txt
