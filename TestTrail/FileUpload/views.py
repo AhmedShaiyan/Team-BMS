@@ -69,14 +69,6 @@ def uploadfile(request):
 def openaioutput(request):
     if request.method == 'GET':
         current_user = request.user
-
-        try:
-            # Try to fetch existing skills for the current user
-            skills = Skills.objects.get(user=current_user.username)
-        except Skills.DoesNotExist:
-            # If skills do not exist, create a new Skills object
-            skills = Skills.objects.create(user=current_user.username, skill_list='')
-
         # Identify skills for the latest uploaded fileait
         output = identify_skills()
         skill_object = Skills.objects.create(user=current_user,name=Document.objects.last(),skill_list=output)
