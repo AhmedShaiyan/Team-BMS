@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
+from django.core.exceptions import MultipleObjectsReturned
 from .forms import UploadFileForm
 from .functions.functions import identify_skills, calculate_cosine_similarity
 from rest_framework.response import Response
@@ -79,11 +80,12 @@ def openaioutput(request):
 def jobs_suggested(request):
     if request.method == 'GET':
         output = calculate_cosine_similarity()
-        job_object = JobRec.objects.create(user=request.user.username,user_skills=Skills.objects.last(),job_recs=output)
+        job_object = JobRec.objects.create(user=request.user.username,user_skills=Skills.objects.filter(user=request.user.username).last(),job_recs=output)
         job_object.save()
+        item = JobRec.objects.filter(user=request.user.username).values()
         template = loader.get_template('FIleUpload/OpenAIOutput.html')
         context = {
-            'output':output
+            'item':item
         }
         return HttpResponse(template.render(context, request))
     
