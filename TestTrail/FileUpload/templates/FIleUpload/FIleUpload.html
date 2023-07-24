@@ -39,8 +39,6 @@
     padding-top: 20px;
   }
  
-    
-  
   .form-field {
     position: relative;
   }
@@ -67,7 +65,7 @@
   }
   .form-field input:focus, .custom-file {
     outline: none; /* Remove the default focus outline */
-    border-color: blanchedalmond; /* Set border color when focused */
+    border-color: #efeee7; /* Set border color when focused */
   }
   .form-field input:not(:placeholder-shown) + .name-label {
     color: black;
@@ -90,7 +88,7 @@
     background-color: #a1ccef; /* Change the color of the Submit button to #a1ccef */
   }
 
-  /* Media Query for smaller screens */
+  
   @media (max-width: 576px) {
     .form-field input, .custom-file {
       width: 100%;
@@ -98,6 +96,11 @@
     .btn-lg {
       width: 70%;
     }
+  }
+  
+  /* Hide anything underneath */
+  .custom-file input[type="file"] {
+    visibility: hidden;
   }
 </style>
 
