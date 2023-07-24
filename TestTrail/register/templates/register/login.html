@@ -1,10 +1,119 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | JobTrail</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font - Pacifico -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <!-- Font - Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Your custom styles go here */
+        body {
+            /* Add your body styles here */
+            text-align: center;
+            padding-top: 200px; /* Adjust the padding-top value to move the form container lower */
+            font-family: 'Montserrat', sans-serif;
+            background-color: #efeee7; /* Set the background color to #efeee7 */
+        }
+        h2 {
+            font-family: 'Pacifico', cursive;
+            font-size: 48px;
+            margin-top: 0;
+            padding-top: 20px;
+        }
+        .form-container {
+            background-color: #d8d8d8;
+            border-radius: 7px;
+            height: 220px;
+            max-width: 300px; /* Set the maximum width of the container */
+            margin: 0 auto; /* Center the container horizontally */
+            padding: 20px; /* Add padding to create space between the border and content */
+            
+        }
+        .form-field {
+            position: relative;
+            margin: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .form-field label {
+            position: absolute;
+            left: 0;
+            pointer-events: none;
+            transition: 0.2s ease all;
+            color: #4285F4; /* Set the color of the label */
+            font-size: 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .form-field input {
+           
+            width: 100%; /* Set the input boxes to fill the container width */
+            height: 35px; /* Set the height of the input boxes */
+            padding: 15px; /* Add padding to make the input box visually distinct */
+            border-radius: 5px; /* Add border-radius for rounded corners */
+            border: 1px solid #979797e1; /* Add border to the input box */
+            transition: 0.2s ease all;
+            margin-bottom: 20px;
+            font-family: 'TT Norms', sans-serif;
+            
+        }
+            
+        .form-field input:focus {
+            outline: none; /* Remove the default focus outline */
+            border-color: blanchedalmond; /* Set border color when focused */
+        }
+        .form-field input:not(:placeholder-shown) + label {
+            color: black;
+            font-size: 10px;
+            top: -17px;
+        }
+        .btn-lg {
+            /* Add your button styles here */
+            font-size: 18px;
+            font-family: 'Pacifico', cursive;;
+            padding: 10px 20px;
+            width: 100%; /* Set the login button to fill the container width */
+            
+            border-radius: 50px;
+            margin-top: -5px;
+            color: black; /* Set the text color to black */
+            border: none; /* Remove the border */
+        }
+        .btn-login {
+            background-color: #a1ccef; /* Change the color of the Login button to #a1ccef */
+        }
+        .signup-link {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            margin-top: 10px; /* Add some space between the form container and the link */
+        }
+    </style>
+</head>
+<body>
+    <h2>JobTrail</h2>
+    <form method="POST" novalidate>
+        {% csrf_token %}
+        <div class="form-container">
+            <div class="form-field">
+                <input type="text" name="username" required>
+                <label>Username</label>
+            </div>
+            <div class="form-field">
+                <input type="password" name="password" required>
+                <label>Password</label>
+            </div>
+            <input type="submit" value="Login" class="btn btn-primary btn-lg btn-login" />
+        </div>
+    </form>
+    <p class="signup-link">New to JobTrail?   <a href="{% url 'signup' %}">Sign Up</a></p>
 
-{% block content %}
-<form method = "POST" novalidate>
-    {% csrf_token %}
-    <h2>Login</h2>
-    {{form.as_p}}
-    <input type="submit" value="Login" />
-</form>
-{% endblock content %}
+    <!-- Bootstrap JS (Popper.js and Bootstrap's JavaScript) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
