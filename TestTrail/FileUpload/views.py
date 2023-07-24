@@ -81,7 +81,7 @@ def jobs_suggested(request):
         output = calculate_cosine_similarity()
         job_object = JobRec.objects.create(user=request.user.username,user_skills=Skills.objects.last(),job_recs=output)
         job_object.save()
-        template = loader.get_template('OpenAIOutput')
+        template = loader.get_template('FIleUpload/OpenAIOutput.html')
         context = {
             'output':output
         }
