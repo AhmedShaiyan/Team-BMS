@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
+from django.template import loader
 from .forms import UploadFileForm
 from .functions.functions import identify_skills, calculate_cosine_similarity
 from rest_framework.response import Response
@@ -80,7 +81,11 @@ def jobs_suggested(request):
         output = calculate_cosine_similarity()
         job_object = JobRec.objects.create(user=request.user.username,user_skills=Skills.objects.last(),job_recs=output)
         job_object.save()
-        return HttpResponse(output)
+        template = loader.get_template('OpenAIOutput')
+        context = {
+            'output':output
+        }
+        return HttpResponse(template.render(context, request))
     
 class ReactView(APIView):
 

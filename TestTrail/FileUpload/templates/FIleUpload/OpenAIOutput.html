@@ -2,21 +2,21 @@
 
 {% block content %}
 <div class="container mt-4">
-  <h2 class="mb-4">Identified Skills</h2>
+  <h2 class="mb-4">Job Listings</h2>
   <div class="row justify-content-center">
     <div class="col-md-8">
       <table class="table table-bordered">
         <thead>
           <tr>
             <th>User</th>
-            <th>Skills List</th>
+            <th>Job Listings</th>
           </tr>
         </thead>
         <tbody>
-          {% for skill in skills %}
+          {% for job in job_listings %}
             <tr>
-              <td>{{ skill.name }}</td>
-              <td>{{ skill.skill_list }}</td>
+              <td>{{ job.user }}</td>
+              <td>{{ job.job_recs }}</td>
             </tr>
           {% endfor %}
         </tbody>
@@ -24,4 +24,29 @@
     </div>
   </div>
 </div>
+
+<!-- Custom styles -->
+<style>
+  /* Your custom styles go here */
+  body {
+    background-color: #efeee7; /* Set the background color to #efeee7 */
+    font-family: 'TT Norms', sans-serif; /* Use TT Norms font */
+  }
+  h2 {
+    font-family: 'TT Norms', sans-serif;
+    font-size: 18px;
+    margin-top: 0;
+    padding-top: 20px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+  }
+</style>
 {% endblock content %}

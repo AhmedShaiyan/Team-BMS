@@ -2,22 +2,116 @@
 
 {% block content %}
 <div class="container mt-4">
-  <h2 class="mb-4">Upload Resume</h2>
   <div class="row justify-content-center">
-    <div class="col-md-6">
+    <div class="col-md-6 text-center">
       <form method="POST" class="post-form" enctype="multipart/form-data">  
         {% csrf_token %}  
         <div class="form-group">
-          {{ form.name.label_tag }}
-          {{ form.name }}
+          <div class="form-field">
+            <label for="{{ form.name.id_for_label }}" class="name-label">Enter name of resume holder</label>
+            {{ form.name }}
+          </div>
         </div>
         <div class="form-group">
           {{ form.filepath.label_tag }}
-          {{ form.filepath }}
+          <div class="custom-file">
+            {{ form.filepath }}
+            <label class="custom-file-label" id="fileLabel" for="id_filepath">Upload Resume</label>
+          </div>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>  
+        <button type="submit" class="btn btn-primary btn-lg">Analyze Resume</button>  
       </form>
     </div>
   </div>
 </div>
+
+<!-- Custom styles -->
+<style>
+  /* Your custom styles go here */
+  body {
+    background-color: #efeee7; /* Set the background color to #efeee7 */
+    font-family: 'TT Norms', sans-serif; /* Use TT Norms font */
+  }
+  h2 {
+    font-family: 'TT Norms', sans-serif;
+    font-size: 18px;
+    margin-top: 0;
+    padding-top: 20px;
+  }
+ 
+    
+  
+  .form-field {
+    position: relative;
+  }
+  .name-label {
+    position: absolute;
+    max-width: 50%;
+    top: -15px;
+    left: 77px;
+    pointer-events: none;
+    transition: 0.2s ease all;
+    color: #000000; /* Set the color of the label */
+    font-size: 10px;
+    font-family: 'TT Norms', sans-serif; /* Use TT Norms font */
+  }
+  .form-field input, .custom-file {
+    width: 60%; /* Set the input boxes and custom file input to fill the container width */
+    height: 40px; /* Set the height of the input boxes */
+    padding: 10px; /* Add padding to make the input box visually distinct */
+    border-radius: 5px; /* Add border-radius for rounded corners */
+    border: 1px solid #ccc; /* Add border to the input box */
+    transition: 0.2s ease all;
+    margin-bottom: 20px;
+    font-family: 'TT Norms', sans-serif; /* Use TT Norms font */
+  }
+  .form-field input:focus, .custom-file {
+    outline: none; /* Remove the default focus outline */
+    border-color: blanchedalmond; /* Set border color when focused */
+  }
+  .form-field input:not(:placeholder-shown) + .name-label {
+    color: black;
+    font-size: 10px;
+    top: -15px;
+  }
+  .btn-lg {
+    /* Add your button styles here */
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'TT Norms', sans-serif;
+    padding: 10px 20px;
+    width: 200px; /* Set a fixed width for the login button */
+    border-radius: 50px;
+    margin-top: 5px;
+    color: black; /* Set the text color to black */
+    border: none; /* Remove the border */
+  }
+  .btn-primary {
+    background-color: #a1ccef; /* Change the color of the Submit button to #a1ccef */
+  }
+
+  /* Media Query for smaller screens */
+  @media (max-width: 576px) {
+    .form-field input, .custom-file {
+      width: 100%;
+    }
+    .btn-lg {
+      width: 70%;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const fileInput = document.getElementById("id_filepath");
+    const fileLabel = document.getElementById("fileLabel");
+
+    if (fileInput && fileLabel) {
+      fileInput.addEventListener("change", function() {
+        fileLabel.textContent = this.files.length > 0 ? this.files[0].name : "Upload File";
+      });
+    }
+  });
+</script>
+
 {% endblock content %}
