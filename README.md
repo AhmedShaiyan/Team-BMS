@@ -1,4 +1,4 @@
-# Team-BMS
+# JobTrail
 To test, you can download our repository at our GitHub. In a Python virtual environment, you can then download the packages required as listed in requirements.txt.
 >>  pip install -r requirements.txt
 
